@@ -1,6 +1,18 @@
+/*
 import data from './data.json' assert { type: 'json' };
 
 const knowledge_graph_json = JSON.parse(JSON.stringify(data));
+*/
+var knowledge_graph_json = {};
+
+// https://javascript.info/fetch
+let response = await fetch('./data.json');
+
+if (response.ok) { // if HTTP-status is 200-299
+  knowledge_graph_json = await response.json();
+} else {
+  alert("HTTP-Error: " + response.status);
+}
 
 var nodes = []
 var edges = []
